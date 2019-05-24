@@ -17,6 +17,11 @@ ci:
 coveralls:
 	pipenv run coveralls
 
+cov-deepsource:
+	pipenv run pytest --cov=stripe --cov-report xml
+	curl https://deepsource.io/cli | sh
+	./bin/deepsource report --analyzer test-coverage --key python --value-file ./coverage.xml
+
 fmt:
 	pipenv run tox -e fmt
 

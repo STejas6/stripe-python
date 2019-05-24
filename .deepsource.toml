@@ -15,3 +15,7 @@ exclude_patterns = [
 
   [analyzers.meta]
     "max_line_length" = 100
+
+[[analyzers]]
+  name = 'test-coverage'
+  enabled = true

@@ -35,6 +35,7 @@ before_install:
     stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}/stripe-mock > /dev/null &
     STRIPE_MOCK_PID=$!
   - export PATH="${PATH}:${PWD}/stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}"
+  - curl https://deepsource.io/cli | sh
 
 install:
   - make init
@@ -44,4 +45,6 @@ script:
   - if [[ $TRAVIS_PYTHON_VERSION == '3.7' ]]; then make fmtcheck; fi
   - make ci
 
-after_success: make coveralls
+after_success:
+  - make coveralls
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.7' ]]; then make cov-deepsource; fi
