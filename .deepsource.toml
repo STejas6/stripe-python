@@ -5,13 +5,10 @@ test_patterns = [
 ]
 
 exclude_patterns = [
-  'stripe/six.py'
+  'examples/**'
 ]
 
 [[analyzers]]
-  name = 'python'
-  enabled = true
-  runtime_version = '2.x.x'
-
-  [analyzers.meta]
-    "max_line_length" = 100
+name = 'python'
+enabled = true
+runtime_version = '3.x.x'
